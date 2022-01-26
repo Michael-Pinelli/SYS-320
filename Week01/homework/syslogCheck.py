@@ -28,7 +28,4 @@ def _syslog(filename,listOfKeywords):
     results = sorted(results)
 
     results = set(results)
-
-    print(results)
     return results
-            #print(x)
