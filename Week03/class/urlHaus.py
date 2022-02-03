@@ -1,4 +1,4 @@
-#Added import for re,
+#Added import for re
 import csv, re
 #Was ur1HausOpen changed 1 to l
 def urlHausOpen(filename,searchTerm):
