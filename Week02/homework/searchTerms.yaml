@@ -1,4 +1,4 @@
 ---
 apache:
-  exe_file: "[QQ].*exe.*.*bytes sent.*"
+  exe_file: "[QQ].*exe.*.*bytes.*"
   exe_proxy_open: "[QQ].*exe.*.*open through proxy.*"
