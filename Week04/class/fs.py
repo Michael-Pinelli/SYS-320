@@ -1,8 +1,19 @@
-import os, sys
+import os, argparse
 
+parser = argparse.ArgumentParser(
+    
+    description = "Traverses a directory and builds a forensic body file",
+    epilog = "Developed by Michael Pinelli, 20220210"
+)
+
+parser.add_argument("-d", "--directory", required = True, help = "Directory that you want to traverse.")
+
+args = parser.parse_args()
+
+rootdir = args.directory
 #print(sys.argv)
 
-rootdir = sys.argv[1]
+#rootdir = sys.argv[1]
 
 if not os.path.isdir(rootdir):
     print("Invalid directory => {}".format(rootdir))
