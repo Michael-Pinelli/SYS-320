@@ -40,34 +40,34 @@ for root, subfolders, filenames in os.walk(rootdir):
 
 print(fList)
 
-def statFile(toStat):
+#def statFile(toStat):
     
-    i = os.stat(toStat,follow_symlinks=False)
-    mode = i[0]
-    inode = i[1]
-    uid = i[4]
-    gid = i[5]
-    fsize = i[6]
-    atime = i[7]
-    mtime = i[8]
-    ctime = i[9]
-    crtime = i[9]
+ #   i = os.stat(toStat,follow_symlinks=False)
+ #   mode = i[0]
+ #   inode = i[1]
+ #   uid = i[4]
+ #   gid = i[5]
+ #   fsize = i[6]
+ #   atime = i[7]
+ #   mtime = i[8]
+ #   ctime = i[9]
+ #   crtime = i[9]
     
-    print("0|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}".format(toStat, inode, mode, uid, gid, fsize, atime, mtime, ctime, crtime))
+#    print("0|{}|{}|{}|{}|{}|{}|{}|{}|{}|{}".format(toStat, inode, mode, uid, gid, fsize, atime, mtime, ctime, crtime))
     
-for eachFile in fList:
-    statFile(eachFile)
+#for eachFile in fList:
+ #   statFile(eachFile)
 
 service = args.selection
 
-def attackSearch(service):
+def attackSearch(rootdir, service):
     
     terms = keywords[service]
 
     listOfKeywords = terms.split(",")
 
     # Open a file
-    with open('searchTerms.yaml') as f:
+    with open(rootdir) as f:
 
         # Read the file
         contents = f.readlines()
@@ -94,3 +94,21 @@ def attackSearch(service):
     results = set(results)
 
     return results
+
+def events(filename, service, term):
+    
+    is_found = attackSearch._logs(filename, service, term)
+
+    found = []
+
+    for eachFound in is_found:
+
+        sp_results = eachFound.split(" ")
+
+        found.append(sp_results[0] + " " + sp_results[2] + " " + sp_results[4] + " " + sp_results[7])
+
+    getValues = set(found)
+
+    for eachHost in getValues:
+        
+        print(eachHost)
