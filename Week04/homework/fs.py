@@ -1,4 +1,11 @@
-import os, argparse
+import os, argparse, yaml, re, sys
+
+try:
+    with open('searchTerms.yaml', 'r') as f:
+        keywords = yaml.safe_load(f)
+        
+except EnvironmentError as e:
+    print(e.strerror)
 
 parser = argparse.ArgumentParser(
     
@@ -7,6 +14,7 @@ parser = argparse.ArgumentParser(
 )
 
 parser.add_argument("-d", "--directory", required = True, help = "Directory that you want to traverse.")
+parser.add_argument("-s", "--selection", required = True, help = "Attack you want to search for")
 
 args = parser.parse_args()
 
@@ -49,3 +57,40 @@ def statFile(toStat):
     
 for eachFile in fList:
     statFile(eachFile)
+
+service = args.selection
+
+def attackSearch(service):
+    
+    terms = keywords[service]
+
+    listOfKeywords = terms.split(",")
+
+    # Open a file
+    with open('searchTerms.yaml') as f:
+
+        # Read the file
+        contents = f.readlines()
+    # Lists to store the results
+    results = []
+
+    # Loop through the list
+    for line in contents:
+    
+         for eachKeyword in listOfKeywords:
+
+            x = re.findall(r''+eachKeyword+'', line)
+
+            for found in x:
+
+                results.append(found)
+    
+    if len(results) == 0:
+        print("No Results")
+        sys.exit(1)
+
+    results = sorted(results)
+
+    results = set(results)
+
+    return results
