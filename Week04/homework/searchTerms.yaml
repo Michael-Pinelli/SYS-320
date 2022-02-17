@@ -1,4 +1,15 @@
 ---
-apache:
-  php: "[GET|POST].*/wordpress/wp-login.php.*,[GET|POST].*/wordpress/wp-login.php.*"
-  cgi: "[GET|POST].*cgi-bin/test-cgi.*,[GET|POST].*/cgi-bin/htsearch.*"
+shell_attack:
+  winShell: cmd.exe
+  nixShell:  /bin/sh
+  webShell: c99.php
+database_sql:
+  phpmyadmin: /phpmyadmin
+  mysql: mysql
+directory_traversal:
+  ect_passwd: /etc/passwd
+  pathing: '\.\.'
+content_management:
+  joomla: joomla
+  wordpress: wordpress
+  xmlrpc: xmlrpc
