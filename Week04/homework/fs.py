@@ -1,6 +1,7 @@
-import os, argparse, yaml, logCheck
+import os, argparse, yaml, logCheck, events
 import importlib
 importlib.reload(logCheck)
+importlib.reload(events)
 
 parser = argparse.ArgumentParser(
     
@@ -10,7 +11,6 @@ parser = argparse.ArgumentParser(
 
 parser.add_argument("-d", "--directory", required = True, help = "Directory that you want to traverse.")
 parser.add_argument("-s", "--service", required = True, help = "Attack you want to search for")
-parser.add_argument("-t", "--term", required = True, help = "Attack you want to search for")
 
 args = parser.parse_args()
 
@@ -19,22 +19,22 @@ rootdir = args.directory
 
 #rootdir = sys.argv[1]
 
-if not os.path.isdir(rootdir):
-    print("Invalid directory => {}".format(rootdir))
-    exit()
+#if not os.path.isdir(rootdir):
+#    print("Invalid directory => {}".format(rootdir))
+#    exit()
     
-fList = []
+#fList = []
 
-for root, subfolders, filenames in os.walk(rootdir):
+#for root, subfolders, filenames in os.walk(rootdir):
     
-    for f in filenames:
+#    for f in filenames:
         
         #print(root + "/" + f)
-        fileList = root + "/" + f
+#        fileList = root + "/" + f
         #print(fileList)
-        fList.append(fileList)
+#        fList.append(fileList)
 
-print(fList)
+#print(fList)
 
 #def statFile(toStat):
     
@@ -54,23 +54,6 @@ print(fList)
 #for eachFile in fList:
  #   statFile(eachFile)
 
-def events(filename, service, term):
-    
-    is_found = logCheck._logs(filename, service, term)
-
-    found = []
-
-    for eachFound in is_found:
-
-        sp_results = eachFound.split(" ")
-
-        found.append(sp_results[0])
-
-    getValues = set(found)
-
-    for eachHost in getValues:
-        
-        print(eachHost)
-
-for eachFile in fList:
-    events(eachFile,args.service, args.term)
+#for eachFile in fList:
+#    events(eachFile, args.service)
+events.event(rootdir, args.service)

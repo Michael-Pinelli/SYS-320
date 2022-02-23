@@ -1,8 +1,8 @@
 ---
 shell_attack:
-  winShell: cmd.exe
-  nixShell:  /bin/sh
-  webShell: c99.php
+  winShell: "cmd.exe"
+  nixShell: "/bin/sh"
+  webShell: "c99.php"
 database_sql:
   phpmyadmin: /phpmyadmin
   mysql: mysql

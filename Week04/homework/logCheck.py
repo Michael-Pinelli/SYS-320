@@ -8,11 +8,11 @@ try:
 except EnvironmentError as e:
     print(e.strerror)
 
-def _logs(filename, service, term):
+def _logs(filename, service):
 
-    terms = keywords[service][term]
+    terms = keywords[service]
 
-    listOfKeywords = terms.split(",")
+    listOfKeywords = terms
 
     # Open a file
     with open(filename) as f:
