@@ -1,8 +1,8 @@
-- QQ.exe tcpconn.tencent.com:80 through HTTPS
-- QQ.exe tcpconn6.tencent.com:443 through HTTPS
 - QQ.exe cgi.qqweb.qq.com:80 through HTTPS
-- QQProtectUpd.exe qdun-data.qq.com:443 through HTTPS
-- QQ.exe 183.60.49.182:443 through HTTPS
-- QQ.exe tcpconn6.tencent.com:80 through HTTPS
+- QQ.exe tcpconn6.tencent.com:443 through HTTPS
 - QQ.exe tcpconn3.tencent.com:443 through HTTPS
+- QQ.exe tcpconn6.tencent.com:80 through HTTPS
+- QQ.exe tcpconn.tencent.com:80 through HTTPS
 - QQPlayer.exe btrace.qq.com:80 through HTTPS
+- QQ.exe 183.60.49.182:443 through HTTPS
+- QQProtectUpd.exe qdun-data.qq.com:443 through HTTPS

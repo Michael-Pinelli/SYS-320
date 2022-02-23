@@ -9,11 +9,11 @@ parser = argparse.ArgumentParser(
 )
 
 parser.add_argument("-d", "--directory", required = True, help = "Directory that you want to traverse.")
-parser.add_argument("-b", "--book", required = True, help = "Attack you want to search for")
+parser.add_argument("-s", "--service", required = True, help = "Attack you want to search for")
+parser.add_argument("-t", "--term", required = True, help = "Attack you want to search for")
 
 args = parser.parse_args()
 
-service = args.book
 rootdir = args.directory
 #print(sys.argv)
 
@@ -54,9 +54,9 @@ print(fList)
 #for eachFile in fList:
  #   statFile(eachFile)
 
-def events(filename, service):
+def events(filename, service, term):
     
-    is_found = logCheck._logs(filename, service)
+    is_found = logCheck._logs(filename, service, term)
 
     found = []
 
@@ -64,13 +64,13 @@ def events(filename, service):
 
         sp_results = eachFound.split(" ")
 
-        found.append(sp_results[0] + " " + sp_results[2] + " " + sp_results[4] + " " + sp_results[7])
+        found.append(sp_results[0])
 
     getValues = set(found)
 
     for eachHost in getValues:
         
         print(eachHost)
-        
+
 for eachFile in fList:
-    events(eachFile)
+    events(eachFile,args.service, args.term)
