@@ -5,7 +5,7 @@ importlib.reload(events)
 
 parser = argparse.ArgumentParser(
     
-    description = "Traverses a directory and builds a forensic body file",
+    description = "Traverses a directory and searches for an attack.",
     epilog = "Developed by Michael Pinelli, 20220210"
 )
 
@@ -15,6 +15,8 @@ parser.add_argument("-s", "--service", required = True, help = "Attack you want 
 args = parser.parse_args()
 
 rootdir = args.directory
+
+events.event(rootdir, args.service)
 #print(sys.argv)
 
 #rootdir = sys.argv[1]
@@ -56,4 +58,3 @@ rootdir = args.directory
 
 #for eachFile in fList:
 #    events(eachFile, args.service)
-events.event(rootdir, args.service)

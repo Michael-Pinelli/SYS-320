@@ -9,7 +9,7 @@ except EnvironmentError as e:
     print(e.strerror)
 
 def _logs(filename, service):
-
+    
     terms = keywords[service]
 
     listOfKeywords = terms

@@ -1,4 +1,4 @@
-import logCheck, yaml, re
+import logCheck
 import importlib
 importlib.reload(logCheck)
 
