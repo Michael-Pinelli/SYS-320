@@ -1,4 +1,6 @@
-import os, argparse, yaml, re, sys      
+import os, argparse, yaml, logCheck
+import importlib
+importlib.reload(logCheck)
 
 try:
 
@@ -62,44 +64,9 @@ print(fList)
 #for eachFile in fList:
  #   statFile(eachFile)
 
-def attackSearch(filename, service, term):
-    
-    terms = keywords[service][term]
-
-    listOfKeywords = terms.split(",")
-    
-    # Open a file
-    with open(filenames) as f:
-
-        # Read the file
-        contents = f.readlines()
-    # Lists to store the results
-    results = []
-
-    # Loop through the list
-    for line in contents:
-    
-         for eachKeyword in listOfKeywords:
-
-            x = re.findall(r''+eachKeyword+'', line)
-
-            for found in x:
-
-                results.append(found)
-    
-    if len(results) == 0:
-        print("No Results")
-        sys.exit(1)
-
-    results = sorted(results)
-
-    results = set(results)
-
-    return results
-
 def events(filename, service, term):
     
-    is_found = attackSearch(filename, service, term)
+    is_found = logCheck._attackSearch(filename, service, term)
 
     found = []
 
