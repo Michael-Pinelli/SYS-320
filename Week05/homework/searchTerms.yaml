@@ -1,0 +1,15 @@
+---
+shell_attack:
+  winShell: cmd.exe
+  nixShell:  /bin/sh
+  webShell: c99.php
+database_sql:
+  phpmyadmin: /phpmyadmin
+  mysql: mysql
+directory_traversal:
+  ect_passwd: /etc/passwd
+  pathing: '\.\.'
+content_management:
+  joomla: joomla
+  wordpress: wordpress
+  xmlrpc: xmlrpc

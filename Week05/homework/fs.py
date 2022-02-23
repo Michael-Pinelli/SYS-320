@@ -1,12 +1,8 @@
-import os, argparse, yaml, re, sys      
+import os, argparse, yaml, re, sys
 
-try:
-
-    with open ('searchTerms.yaml', 'r') as yf:
-        keywords = yaml.safe_load(yf)
-
-except EnvironmentError as e:
-    print(e.strerror)
+with open('searchTerms.yaml', 'r') as f:
+    keywords = yaml.safe_load(f)
+        
 
 parser = argparse.ArgumentParser(
     
@@ -20,8 +16,6 @@ parser.add_argument("-t", "--term", required = True, help = "Term you want to se
 
 args = parser.parse_args()
 
-service = args.book
-term = args.term
 rootdir = args.directory
 #print(sys.argv)
 
@@ -62,14 +56,14 @@ print(fList)
 #for eachFile in fList:
  #   statFile(eachFile)
 
-def attackSearch(filename, service, term):
+def attackSearch():
     
     terms = keywords[service][term]
 
     listOfKeywords = terms.split(",")
     
     # Open a file
-    with open(filenames) as f:
+    with open(rootdir) as f:
 
         # Read the file
         contents = f.readlines()
@@ -97,9 +91,9 @@ def attackSearch(filename, service, term):
 
     return results
 
-def events(filename, service, term):
+def events():
     
-    is_found = attackSearch(filename, service, term)
+    is_found = attackSearch()
 
     found = []
 
