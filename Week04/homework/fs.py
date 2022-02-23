@@ -2,14 +2,6 @@ import os, argparse, yaml, logCheck
 import importlib
 importlib.reload(logCheck)
 
-try:
-
-    with open ('searchTerms.yaml', 'r') as yf:
-        keywords = yaml.safe_load(yf)
-
-except EnvironmentError as e:
-    print(e.strerror)
-
 parser = argparse.ArgumentParser(
     
     description = "Traverses a directory and builds a forensic body file",
@@ -18,12 +10,10 @@ parser = argparse.ArgumentParser(
 
 parser.add_argument("-d", "--directory", required = True, help = "Directory that you want to traverse.")
 parser.add_argument("-b", "--book", required = True, help = "Attack you want to search for")
-parser.add_argument("-t", "--term", required = True, help = "Term you want to search for")
 
 args = parser.parse_args()
 
 service = args.book
-term = args.term
 rootdir = args.directory
 #print(sys.argv)
 
@@ -64,9 +54,9 @@ print(fList)
 #for eachFile in fList:
  #   statFile(eachFile)
 
-def events(filename, service, term):
+def events(filename, service):
     
-    is_found = logCheck._attackSearch(filename, service, term)
+    is_found = logCheck._logs(filename, service)
 
     found = []
 
@@ -74,7 +64,7 @@ def events(filename, service, term):
 
         sp_results = eachFound.split(" ")
 
-        found.append(sp_results[0])
+        found.append(sp_results[0] + " " + sp_results[2] + " " + sp_results[4] + " " + sp_results[7])
 
     getValues = set(found)
 
