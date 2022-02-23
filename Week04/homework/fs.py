@@ -1,11 +1,8 @@
 import os, argparse, yaml, re, sys
 
-try:
-    with open('searchTerms.yaml', 'r') as f:
-        keywords = yaml.safe_load(f)
+with open('searchTerms.yaml', 'r') as f:
+    keywords = yaml.safe_load(f)
         
-except EnvironmentError as e:
-    print(e.strerror)
 
 parser = argparse.ArgumentParser(
     
@@ -14,10 +11,13 @@ parser = argparse.ArgumentParser(
 )
 
 parser.add_argument("-d", "--directory", required = True, help = "Directory that you want to traverse.")
-parser.add_argument("-s", "--selection", required = True, help = "Attack you want to search for")
+parser.add_argument("-b", "--book", required = True, help = "Attack you want to search for")
+parser.add_argument("-t", "--term", required = True, help = "Term you want to search for")
 
 args = parser.parse_args()
 
+term = args.term
+service = args.book
 rootdir = args.directory
 #print(sys.argv)
 
@@ -58,14 +58,12 @@ print(fList)
 #for eachFile in fList:
  #   statFile(eachFile)
 
-service = args.selection
-
-def attackSearch(rootdir, service):
+def attackSearch():
     
-    terms = keywords[service]
+    terms = keywords[service][term]
 
     listOfKeywords = terms.split(",")
-
+    
     # Open a file
     with open(rootdir) as f:
 
@@ -95,9 +93,9 @@ def attackSearch(rootdir, service):
 
     return results
 
-def events(filename, service, term):
+def events():
     
-    is_found = attackSearch._logs(filename, service, term)
+    is_found = attackSearch()
 
     found = []
 
@@ -105,10 +103,13 @@ def events(filename, service, term):
 
         sp_results = eachFound.split(" ")
 
-        found.append(sp_results[0] + " " + sp_results[2] + " " + sp_results[4] + " " + sp_results[7])
+        found.append(sp_results[0])
 
     getValues = set(found)
 
     for eachHost in getValues:
         
         print(eachHost)
+        
+for eachFile in fList:
+    events(eachFile)
