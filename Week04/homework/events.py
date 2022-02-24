@@ -12,10 +12,11 @@ def event(filename, service):
 
         sp_results = eachFound.split(" ")
 
-        found.append(sp_results[0] + " ")
+        found.append(sp_results[6] + " " + sp_results[8] + " " + sp_results[9])
 
     getValues = set(found)
-
+    
     for eachHost in getValues:
         
         print(eachHost)
+    #print(found)

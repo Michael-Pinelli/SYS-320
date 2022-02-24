@@ -16,28 +16,28 @@ args = parser.parse_args()
 
 rootdir = args.directory
 
-events.event(rootdir, args.service)
 #print(sys.argv)
 
 #rootdir = sys.argv[1]
 
-#if not os.path.isdir(rootdir):
-#    print("Invalid directory => {}".format(rootdir))
-#    exit()
+if not os.path.isdir(rootdir):
+   print("Invalid directory => {}".format(rootdir))
+   exit()
     
-#fList = []
+fList = []
 
-#for root, subfolders, filenames in os.walk(rootdir):
+for root, subfolders, filenames in os.walk(rootdir):
     
-#    for f in filenames:
-        
-        #print(root + "/" + f)
-#        fileList = root + "/" + f
-        #print(fileList)
-#        fList.append(fileList)
+   for f in filenames:
+      print(root + "/" + f)
+      fileList = root + "/" + f
+      print(fileList)
+      fList.append(fileList)
 
-#print(fList)
+print(fList)
 
+for eachFile in fList:
+        events.event(eachFile, args.service)
 #def statFile(toStat):
     
  #   i = os.stat(toStat,follow_symlinks=False)
