@@ -5,8 +5,8 @@ def _logs(filename, service):
     with open ('searchTerms.yaml', 'r') as yf:
         contents = yaml.safe_load_all(yf)
     
-        for line in contents:
-            for key, value in line[service].items():
+        for word in contents:
+            for key, value in word[service].items():
                 words.append(value)
                 
     # Open a file
@@ -14,7 +14,6 @@ def _logs(filename, service):
 
         # Read the file
         file = f.readlines()
-    print(file)
     # Lists to store the results
     results = []
 
