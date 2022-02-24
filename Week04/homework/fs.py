@@ -37,7 +37,7 @@ for root, subfolders, filenames in os.walk(rootdir):
 print(fList)
 
 for eachFile in fList:
-        events.event(eachFile, args.service)
+   events.event(eachFile, args.service)
 #def statFile(toStat):
     
  #   i = os.stat(toStat,follow_symlinks=False)

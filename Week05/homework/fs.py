@@ -2,10 +2,6 @@ import os, argparse, yaml, searchCSV
 import importlib
 importlib.reload(searchCSV)
 
-with open('searchTerms.yaml', 'r') as f:
-    keywords = yaml.safe_load(f)
-        
-
 parser = argparse.ArgumentParser(
     
     description = "Searches for mailicious activity",
@@ -20,23 +16,23 @@ args = parser.parse_args()
 rootdir = args.directory
 
 
-# if not os.path.isdir(rootdir):
-#     print("Invalid directory => {}".format(rootdir))
-#     exit()
+if not os.path.isdir(rootdir):
+    print("Invalid directory => {}".format(rootdir))
+    exit()
     
-# fList = []
+fList = []
 
-# for root, subfolders, filenames in os.walk(rootdir):
+for root, subfolders, filenames in os.walk(rootdir):
     
-#     for f in filenames:
+    for f in filenames:
         
-#         #print(root + "/" + f)
-#         fileList = root + "/" + f
-#         #print(fileList)
-#         fList.append(fileList)
+        #print(root + "/" + f)
+        fileList = root + "/" + f
+        #print(fileList)
+        fList.append(fileList)
 
-# print(fList)
+print(fList)
 
-searchCSV.open(rootdir, args.attack)
-# for eachFile in fList:
-#     searchCSV.open(rootdir, args.attack)
+#searchCSV.search(rootdir, args.attack)
+for eachFile in fList:
+    searchCSV.search(eachFile, args.attack)

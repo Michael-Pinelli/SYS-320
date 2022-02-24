@@ -1,15 +1,45 @@
 ---
-shell_attack:
-  winShell: "cmd.exe"
-  nixShell: "/bin/sh"
-  webShell: "c99.php"
-database_sql:
-  phpmyadmin: /phpmyadmin
-  mysql: mysql
-directory_traversal:
-  ect_passwd: /etc/passwd
-  pathing: '\.\.'
-content_management:
-  joomla: joomla
-  wordpress: wordpress
-  xmlrpc: xmlrpc
+cred_collection:
+  security_packages: "Security Packages"
+  notification_packages: "Notification Packages"
+  authentication_packages: "Authentication Packages"
+java_or_vbscript:
+  mshta: mshta
+  hta: .hta
+  vbscript: "vbscript:"
+  about: "about:"
+  javascript: "javascript:"
+  reghead: regHead
+  wscript: wscript.Shell
+  cscript: cscript
+  jscript: jscript
+  sscript: sscript
+  regvar32: Regsvr32
+pwr_exec: 
+  pwr_shell_exe: powershell.exe 
+  pwr_shell: powershell
+  ps1: ps1
+  psm1: psm1
+  ps_locksown: PSLockdownPolicyw
+  exec_lang: ExecutionContext.SessionState.LanguageMode
+  net_web_client: Net.WebClient
+  iex: iex
+  invoke: Invoke-
+  token_imp: TOKEN_IMPERSONATE
+  token_dupe: TOKEN_DUPLICATE
+  token_adj_priv: TOKEN_ADJUST_PRIVILEGES
+  token_priv: TOKEN_PRIVILEGES
+  get_func: GetDelegateForFunctionPointer
+  sys_name: System.Reflection.AssemblyName
+  sys_builder: System.Reflection.Emit.AssemblyBuilderAccess
+  sys_delegate: System.MulticastDelegate
+  sys_ref: System.Reflection.CallingConventions
+  get_pass: Get-GPPPassword
+  sys_sec: System.Security.Cryptography.AesCryptoServiceProvider
+  code: 0x4e,0x99,0x06,0xe8,0xfc,0xb6,0x6c,0xc9,0xfa,0xf4
+  group_properties: Groups.User.Properties.cpassword
+  sch_task: ScheduledTasks.Task.Properties.cpassword
+  sys_auto: 'System.Management.Automation.WindowsErrorReporting'
+  out_dump: Out-MiniDump
+  min_dump: MiniDumpWriteDump
+  exec_pol_rem: ExecutionPolicyPSRemoting
