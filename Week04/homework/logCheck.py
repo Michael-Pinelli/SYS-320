@@ -1,31 +1,27 @@
 import re, sys, yaml
 
-try:
-
-    with open ('searchTerms.yaml', 'r') as yf:
-        keywords = yaml.safe_load(yf)
-
-except EnvironmentError as e:
-    print(e.strerror)
-
 def _logs(filename, service):
+    words = []
+    with open ('searchTerms.yaml', 'r') as yf:
+        contents = yaml.safe_load_all(yf)
     
-    terms = keywords[service]
-
-    listOfKeywords = terms
-
+        for line in contents:
+            for key, value in line[service].items():
+                words.append(value)
+                
     # Open a file
     with open(filename) as f:
 
         # Read the file
-        contents = f.readlines()
+        file = f.readlines()
+    print(file)
     # Lists to store the results
     results = []
 
     # Loop through the list
-    for line in contents:
+    for line in file:
     
-         for eachKeyword in listOfKeywords:
+        for eachKeyword in words:
 
             x = re.findall(r''+eachKeyword+'', line)
 
