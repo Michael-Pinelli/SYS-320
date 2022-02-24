@@ -14,13 +14,13 @@ java_or_vbscript:
   cscript: cscript
   jscript: jscript
   sscript: sscript
-  regvar32: Regsvr32
+  regvar32: regsvr32
 pwr_exec: 
   pwr_shell_exe: powershell.exe 
   pwr_shell: powershell
   ps1: ps1
   psm1: psm1
-  ps_locksown: PSLockdownPolicyw
+  ps_locksown: PSLockdownPolicy
   exec_lang: ExecutionContext.SessionState.LanguageMode
   net_web_client: Net.WebClient
   iex: iex
