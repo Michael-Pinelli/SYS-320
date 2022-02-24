@@ -9,7 +9,7 @@ parser = argparse.ArgumentParser(
 )
 
 parser.add_argument("-d", "--directory", required = True, help = "Directory that you want to traverse.")
-parser.add_argument("-a", "--attack", required = True, help = "Attack you want to search for")
+parser.add_argument("-a", "--attack", required = True, help = "Attack you want to search for. List: cred_collection, java_or_vbscript, or pwr_exec")
 
 args = parser.parse_args()
 
@@ -33,6 +33,5 @@ for root, subfolders, filenames in os.walk(rootdir):
 
 print(fList)
 
-#searchCSV.search(rootdir, args.attack)
 for eachFile in fList:
     searchCSV.search(eachFile, args.attack)

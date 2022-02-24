@@ -30,11 +30,24 @@ def search(filename, attack):
                     x = re.findall(keyword, eachLine[1])
                     #Runs through what we found
                     for _ in x:
+                        if attack == 'cred_collection':
+                            attack_used = 'Registry Attack'
+                            attack_description = """The Windows Registry stores configuration information that can be used by the system or other programs.
+                        Adversaries may query the Registry looking for credentials and passwords that have been stored for use by other programs or services.
+                        Sometimes these credentials are used for automatic logons.Adversaries could also inject malicious DLLs into registry keys that are loaded after reboot.
+                        When a user authenticates the DLLs have a routine that captures their credentials after login."""
+                        elif attack == 'java_or_vbscript':
+                            attack_used = 'Javascript or VBScript'
+                            attack_description = """Adversaries may use scripts to aid in operations and perform multiple actions that would otherwise be manual.
+                        Scripting is useful for speeding up operational tasks and reducing the time required to gain access to critical resources.
+                        Some scripting languages may be used to bypass process monitoring mechanisms by directly interacting with the operating system at an API level instead of calling other programs.
+                        Common scripting languages for Windows include VBScript and PowerShell but could also be in the form of command-line batch scripts."""
+                        else:
+                            attack_used = 'Powershell Execution'
+                            attack_description = """PowerShell is a powerful interactive command-line interface and scripting environment included in the Windows operating system.
+                        Adversaries can use PowerShell to perform a number of actions, including discovery of information and execution of code.
+                        Examples include the Start-Process cmdlet which can be used to run an executable and the Invoke-Command cmdlet which runs a command locally or on a remote computer."""
                         
-                    # Don't edit this line. It is here to show how it is possible
-                    # to remove the "tt" so programs don't convert the malicious
-                    # domains to links that an be accidentally clicked on.
-                        #Changed 6 to 7 for the non test data csv
                         arguments = eachLine[1]
                         hostname = eachLine[2]
                         name = eachLine[3]
