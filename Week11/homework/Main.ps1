@@ -29,7 +29,7 @@ if ( $result = 2 ) {
     $input_paths = @('.\compromised-ips.txt','.\emerging-botcc.rules')
 
     # Extract the IP addresses
-    $regex_drop = '\b\d{1,3\.\d{1,3\.\d{1,3\.\d{1,3\b'
+    $regex_drop = '\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b'
 
     # Append the IP addresses to the temporary IP list
     select-string -Path $input_paths -Pattern $regex_drop | `
@@ -65,7 +65,7 @@ if ( $result = 2 ) {
     $input_paths = @('.\compromised-ips.txt','.\emerging-botcc.rules')
 
     # Extract the IP addresses
-    $regex_drop = '\b\d{1,3\.\d{1,3\.\d{1,3\.\d{1,3\b'
+    $regex_drop = '\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b'
 
     # Append the IP addresses to the temporary IP list
     select-string -Path $input_paths -Pattern $regex_drop | `
@@ -76,6 +76,6 @@ if ( $result = 2 ) {
     # Get the IP addresses discovered, loop through and replace the beginnign of the line with the IPTables syntax
     # After the IP address, add the remailing IPTables syntax and save the results to a file
     (Get-Content -Path ".\ips-bad.tmp") | % `
-    { $_ -replace "^","New-NetFirewallRule -DisplayName 'BLOCK IP ADDRESS - '" -replace "$", " -Direction inbound -Profile Any -Action Block -RemoteAddress " -replace "$" } #| `
+    { $_ -replace "^","New-NetFirewallRule -DisplayName 'BLOCK IP ADDRESS - '" -replace "$", " -Direction inbound -Profile Any -Action Block -RemoteAddress " -replace "$" } | `
     Out-File -FilePath "iptables.ps1"
 }
